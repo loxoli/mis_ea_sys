@@ -1,4 +1,4 @@
-<?php include('slice-slice/top.php'); ?>
+<?php include('slice-slice/top.php'); //請把這玩意兒放在頁面最上面 ?>
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>															<!----這裡修改頁面內header標題---->
@@ -15,4 +15,4 @@
         <section class="content"> <!----這個section裡面放內容---->
 
         </section><!-- /.content -->
-<?php include('slice-slice/bottom.php');
+<?php include('slice-slice/bottom.php //請把這玩意兒放在頁面最下面');
