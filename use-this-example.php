@@ -1,4 +1,6 @@
-<?php include('slice-slice/top.php'); //請把這玩意兒放在頁面最上面 ?>
+<?php 
+$page_title="自訂標題";
+include('slice-slice/top.php'); //請把這玩意兒放在頁面最上面 ?>
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>															<!----這裡修改頁面內header標題---->
