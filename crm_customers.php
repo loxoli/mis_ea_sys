@@ -1,5 +1,5 @@
 <?php
- $page_title="Customers List | Order";
+ $page_title="Customers List | CRM";
 include('slice-slice/top.php');
 include('db/db.php');?>
 
@@ -9,13 +9,13 @@ include('db/db.php');?>
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>															<!----這裡修改頁面內header標題---->
-            Order
-            <small>order list</small>
+            CRM
+            <small>Customers List</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li><!----這裡修改麵包屑---->
-            <li class="active">訂單管理</li>
-            <li class="active">Order management</li>
+            <li class="active">CRM</li>
+            <li class="active">Customers List</li>
           </ol>
         </section>
 
@@ -25,43 +25,35 @@ include('db/db.php');?>
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">訂單管理</h3>
+                  <h3 class="box-title">客戶資料</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <table id="example1" class="table table-bordered table-striped">
                     <thead>
                       <tr>
-                        <th>訂單編號</th>
-                        <th>客戶編號</th>
-                        <th>員工編號</th>
-                        <th>訂單日期</th>
-						<th>要貨日期</th>
-                        <th>送貨日期</th>
-						<th>運費</th>
-						<th>收貨人</th>
-						<th>送貨地址</th>
-						<th>訂單狀態</th>
+                        <th>姓名</th>
+                        <th>電話</th>
+                        <th>email</th>
+                        <th>公司</th>
+						<th>國家</th>
+                        <th>地址</th>
 						<th></th>
                       </tr>
                     </thead>
                     <tbody>
 					<?php
-						$sql2 = "SELECT * FROM `order`";
+						$sql2 = "SELECT * FROM `crm_customers` order by c_add_time desc";
 						$result2 = mysql_query($sql2);
-						while($ord = mysql_fetch_array($result2)){
+						while($customer = mysql_fetch_array($result2)){
 					?>
                       <tr>
-                        <td><?=$ord['o_number']?></td>
-                        <td><?=$ord['o_customer']?></td>
-                        <td><?=$ord['staff']?></td>
-						<td><?=$ord['o_date']?></td>
-                        <td><?=$ord['r_date']?></td>
-                        <td><?=$ord['t_date']?></td>
-						<td><?=$ord['money']?></td>
-						<td><?=$ord['customer']?></td>
-						<td><?=$ord['adress']?></td>
-						<td><?=$ord['condition']?></td>
-						<td><a href="crm_edit_cus.php?c=<?=$ord['o_number']?>">編輯</a><br><a href="process/process_crm_del_c.php?c=<?=$ord['o_number']?>">刪除</a></td>
+                        <td><?=$customer['name']?></td>
+                        <td><?=$customer['phone']?></td>
+                        <td><?=$customer['email']?></td>
+						<td><?=$customer['company']?></td>
+                        <td><?=$customer['country']?></td>
+                        <td><?=$customer['address']?></td>
+						<td><a href="crm_edit_cus.php?c=<?=$customer['c_uid']?>">編輯</a><br><a href="process/process_crm_del_c.php?c=<?=$customer['c_uid']?>">刪除</a></td>
                       </tr>
 					<?php
 						}
@@ -70,16 +62,11 @@ include('db/db.php');?>
                     <!--
 					<tfoot>
                       <tr>
-                        <th><i>訂單編號</i></th>
-                        <th><i>客戶編號</i></th>
-                        <th><i>員工編號</i></th>
-                        <th><i>訂單日期</i></th>
-                        <th><i>要貨日期</i></th>
-						<th><i>送貨日期</i></th>
-						<th><i>運費</i></th>
-						<th><i>收貨人</i></th>
-						<th><i>送貨地址</i></th>
-						<th><i>訂單狀態</i></th>
+                        <th><i>姓名</i></th>
+                        <th><i>電話</i></th>
+                        <th><i>email</i></th>
+                        <th><i>國家</i></th>
+                        <th><i>地址</i></th>
 						<th><i></i></th>
                       </tr>
                     </tfoot>

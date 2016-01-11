@@ -1,8 +1,8 @@
 <?php include('slice-slice/top.php'); ?>
   <!--DB連線-->
    <?php include('db/db.php'); ?>
-   <?php session_start(); ?>
-   <?php mysql_close($conn); ?>
+
+
    
         <!-- Content Header (Page header) -->
             <!-- Main content -->
@@ -50,20 +50,23 @@
          
          <?php
                        
-$sql = "SELECT * FROM 'final'.'staff'";
+ $sql = "SELECT * FROM `staff`;";
 						$result = mysql_query($sql);
-		   $row = mysql_fetch_row($result);
+		  while( $row = mysql_fetch_row($result)){
+		   
 					  ?>
                     </thead>
                     <tbody>
                       <tr>
-                        <td><?php $row['fullname']   ?></td>
-                        <td><?php $row[1]   ?></td>
-                        <td><?php $row[2]   ?></td>
-                        <td><?php $row[3]   ?></td>
-                        <td><?php $row[4]   ?></td>
+                        <td><?=  $row['fullname']; ?></td>
+                        <td><?= $row['status'];   ?></td>
+                        <td><?= $row['position'] ;  ?></td>
+                        <td><?= $row['staff_id'] ;  ?></td>
+                        <td><?= $row['activity']  ; ?></td>
                       </tr>
-                   
+                   <?php
+						}
+					?>
                    
                     </tbody>
                     <tfoot>
@@ -89,3 +92,4 @@ $sql = "SELECT * FROM 'final'.'staff'";
       <!-- /.content-wrapper -->
       
 <?php include('slice-slice/bottom.php');
+  mysql_close($conn); ?>

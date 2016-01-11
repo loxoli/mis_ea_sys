@@ -17,4 +17,4 @@ include('slice-slice/top.php'); //請把這玩意兒放在頁面最上面 ?>
         <section class="content"> <!----這個section裡面放內容---->
 
         </section><!-- /.content -->
-<?php include('slice-slice/bottom.php //請把這玩意兒放在頁面最下面');
+<?php include('slice-slice/bottom.php');
