@@ -17,12 +17,13 @@ include("../db/db.php");
 		echo "<script>alert('請乖乖輸入帳號&密碼~');location.href='../login.php';</script>";
 	}
 	else{
-		$sql = "select password from accounts where username='$usern';";  //取得所有帳號密碼資料
+		$sql = "select password,staff_id from accounts where username='$usern';";  //取得所有帳號密碼資料
 	        $result = mysql_query($sql);
 	        $a_pass = mysql_fetch_array($result);
 
 		if($password==$a_pass["password"]){
 			$_SESSION["username"]=$usern;
+                        $_SESSION["staff_id"]=$a_pass["staff_id"];
 			echo "<script>alert('登入成功!');location.href='../login.php'; </script>";
 		}else{
 			echo "<script>alert('帳號或密碼錯誤:( 請再試一次');location.href='../login.php'; </script>";
