@@ -23,9 +23,6 @@ include('db/db.php');?>
         <section class="content"> <!----這個section裡面放內容---->
           <div class="row">
             <div class="col-xs-12">
-		<div class="box-footer" style="text-align:right">
-                    <button type="button" class="btn btn-primary" onclick="location.href='crm_add_customer.php';">Add A New Customer</button>
-                  </div>
               <div class="box">
                 <div class="box-header">
                   <h3 class="box-title">客戶資料</h3>
@@ -38,25 +35,22 @@ include('db/db.php');?>
                         <th>電話</th>
                         <th>email</th>
                         <th>公司</th>
-						<th>國家</th>
-                        <th>地址</th>
-						<th></th>
+						
                       </tr>
                     </thead>
                     <tbody>
 					<?php
-						$sql2 = "SELECT * FROM `crm_customers` order by c_add_time desc";
+						$sql2 = "SELECT * FROM `staff
+`";
 						$result2 = mysql_query($sql2);
 						while($customer = mysql_fetch_array($result2)){
 					?>
                       <tr>
-                        <td><?=$customer['name']?></td>
-                        <td><?=$customer['phone']?></td>
-                        <td><?=$customer['email']?></td>
-						<td><?=$customer['company']?></td>
-                        <td><?=$customer['country']?></td>
-                        <td><?=$customer['address']?></td>
-						<td><a href="crm_view_customer.php?c=<?=$customer['c_uid']?>">編輯</a><br><a href="process/process_crm_delete_customer.php?c=<?=$customer['c_uid']?>">刪除</a></td>
+                        <td><?=$customer['fullname']?></td>
+                        <td><?=$customer['staff_id']?></td>
+                        <td><?=$customer['position']?></td>
+						
+						<td><a href="crm_edit_cus.php?c=<?=$customer['c_uid']?>">編輯</a><br><a href="process/process_crm_del_c.php?c=<?=$customer['c_uid']?>">刪除</a></td>
                       </tr>
 					<?php
 						}

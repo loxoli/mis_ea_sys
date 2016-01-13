@@ -1,65 +1,72 @@
 <?php
- $page_title="Logistics management";
+ $page_title="應收帳款 | 查詢";
 include('slice-slice/top.php');
 include('db/db.php');?>
 
-<!-- DataTables -->
+    <!-- DataTables -->
     <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
 
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>															<!----這裡修改頁面內header標題---->
-            商品列表
-            <small>product list</small>
+            應收帳款
+            <small>單據查詢</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li><!----這裡修改麵包屑---->
-            <li class="active">庫存管理</li>
-            <li class="active">Inventory management</li>
+            <li class="active">單據管理</li>
+            <li class="active">accounts_receivable management list</li>
           </ol>
         </section>
 
- <!-- Main content -->        
- 
- <section class="content"> <!----這個section裡面放內容---->
+        <!-- Main content -->
         <section class="content"> <!----這個section裡面放內容---->
           <div class="row">
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">商品列表</h3>
-				  <a href="inventory.php?c=<?=$ord['inventory_information']?>">庫存列表</a></td></button> <a href="supplier_list.php?c=<?=$ord['supplier_list']?>">供應商列表</a></td></button>
-
+                  <h3 class="box-title">單據管理</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <table id="example1" class="table table-bordered table-striped">
                     <thead>
                       <tr>
-                        <th>產品編號</th>
-                        <th>產品名稱</th>
-                        <th>供應商</th>
-                        <th>單位</th>
-						<th>單價</th>
-				
+                        <th>單據編號</th>
+                        <th>客戶單號</th>
+                        <th>收據產生日期</th>
+                        <th>廠商名稱</th>
+						<th>部門</th>
+                        <th>填表人</th>
+						<th>連絡電話</th>
+						<th>商品規格</th>
+						<th>金額</th>
+						<th>備註</th>
+                        <th>狀態</th>
 						<th></th>
                       </tr>
                     </thead>
                     <tbody>
 					<?php
-						$sql2 = "SELECT * FROM `product`";
+						$sql2 = "SELECT * FROM `accounts_receivable`";
 						$result2 = mysql_query($sql2);
 						while($ord = mysql_fetch_array($result2)){
 					?>
                       <tr>
-                        <td><a href="inventory_information.php?c=<?=$ord['p_number']?>"><?=$ord['p_number']?></a></td> 
-                        <td><?=$ord['p_name']?></td>
-						<td><a href="supplier_list.php?c=<?=$ord['s_number']?>"><?=$ord['s_number']?></a></td> 
-						<td><?=$ord['p_nuit']?></td>
-            
-						<td><?=$ord['price']?></td>
-               
-	
-						<td><a href="admin_product.jsp?c=<?=$ord['p_number']?>">新增</a><br><a href="process/process_crm_del_c.php?c=<?=$ord['s_number']?>">刪除</a></td>
+                        <td><?=$ord['編號']?></td>
+                        <td><?=$ord['date_start']?></td>
+                        <td><?=$ord['date_end']?></td>
+						<td><?=$ord['provider']?></td>
+                        <td><?=$ord['provider']?></td>
+                        <td><?=$ord['id']?></td>
+                        <td><?=$ord['telephone']?></td>
+						<td><?=$ord['list1']?></td>
+						<td><?=$ord['money']?></td>
+						<td><?=$ord['other']?></td>
+                       <td><?=$ord['condition']?></td>
+                       
+						
+                       
+						<td><a href="crm_edit_cus.php?c=<?=$ord['o_number']?>">查看</a><br><a href="process/process_crm_del_c.php?c=<?=$ord['o_number']?>">催款</a></td>
                       </tr>
 					<?php
 						}
@@ -68,11 +75,16 @@ include('db/db.php');?>
                     <!--
 					<tfoot>
                       <tr>
-                        <th><i>產品編號</i></th>
-                        <th><i>產品名稱</i></th>
-                        <th><i>供應商</i></th>
-                        <th><i>單位</i></th>
-                        <th><i>單價</i></th>
+                        <th><i>訂單編號</i></th>
+                        <th><i>客戶編號</i></th>
+                        <th><i>員工編號</i></th>
+                        <th><i>訂單日期</i></th>
+                        <th><i>要貨日期</i></th>
+						<th><i>送貨日期</i></th>
+						<th><i>運費</i></th>
+						<th><i>收貨人</i></th>
+						<th><i>送貨地址</i></th>
+						<th><i>訂單狀態</i></th>
 						<th><i></i></th>
                       </tr>
                     </tfoot>

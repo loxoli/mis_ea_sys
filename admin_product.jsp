@@ -1,4 +1,4 @@
-<?php
+﻿<?php
  $page_title="Logistics management";
 include('slice-slice/top.php');
 include('db/db.php');?>
@@ -26,49 +26,51 @@ include('db/db.php');?>
               <div class="box">
                 <div class="box-header">
                   <h3 class="box-title">庫存資訊</h3>
-<a href="inventory.php?c=<?=$ord['p_number']?>">商品列表</a></td></button><a href="supplier_list.php?c=<?=$ord['p_number']?>">供應商列表</a></td></button>
+<a href="inventory.php?c=<?=$ord['p_number']?>">商品列表</a></td></button><a href="supplier.php?c=<?=$ord['p_number']?>">供應商列表</a></td></button>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                  <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
-                        <th>產品編號</th>
-                        <th>產品名稱</th>
-                        <th>庫存量</th>
-                   
+                  <a href='admin_product_deal.jsp?op=add_product'>增加產品&nbsp&nbsp</a>
+	<table border="1">
+		<tr>
+			<td>SP_NO</td>
+			<td>服務名稱</td>
+			<td>服務價錢</td>
+			<td>服務說明</td>
+			<td>庫存</td>
+			<td>增加庫存</td>
+			<td>減少庫存</td>
+			<td>刪除產品</td>
+			
 
-						<th></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-					<?php
-						$sql2 = "SELECT * FROM `product`";
+		</tr>
+<?php
+						$sql2 = "SELECT * FROM `product``";
 						$result2 = mysql_query($sql2);
-						while($ord = mysql_fetch_array($result2))
-						{
+						while($ord = mysql_fetch_array($result2)){
 					?>
-                      <tr>
-                        <td><a href="inventory.php?c=<?=$ord['p_number']?>"><?=$ord['p_number']?></a></td> 
-                        <td><?=$ord['p_name']?></td>
-                       <td><?=$ord['level']?></td>
-	
-						<td><a href="inventory.php?c=<?=$ord['p_number']?>">新增</a><br><a href="process/process_crm_del_c.php?c=<?=$ord['s_number']?>">刪除</a></td>
-                      </tr>
-					<?php
-						}
-					?>
-                    </tbody>
-                    <!--
-					<tfoot>
-                      <tr>
-                        <th><i>產品編號</i></th>
-                        <th><i>產品名稱</i></th>
-						<th><i>庫存</i></th>
-						<th><i></i></th>
-                      </tr>
-                    </tfoot>
-					-->
-                  </table>
+			<tr>
+			<td><%=rs.getString(1)%></td>
+			<td><%=rs.getString(2)%></td>
+			<td><%=rs.getString(3)%></td>
+			<td><%=rs.getString(6)%></td>
+			<td><%=rs.getString(4)%></td> 
+			<td><a href='admin_product_deal.jsp?op=add&bm=<%=rs.getString(1)%>'>加</a></td>
+			<td><a href='admin_product_deal.jsp?op=div&bm=<%=rs.getString(1)%>'>減</a></td>
+			<td><a href='admin_product_deal.jsp?op=del&bm=<%=rs.getString(1)%>'>刪除</a></td>
+
+			
+			
+		</tr>
+
+	<%
+
+	}
+		
+%>
+</table>
+                  
+			
+           
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
 
@@ -90,16 +92,6 @@ include('db/db.php');?>
     <script src="plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
 <!-- page script -->
-    <script>
-      $(function () {
-        $("#example1").DataTable();
-        $('#example2').DataTable({
-          "paging": true,
-          "lengthChange": false,
-          "searching": false,
-          "ordering": true,
-          "info": true,
-          "autoWidth": false
-        });
-      });
-    </script>
+
+</body>
+</html>

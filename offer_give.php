@@ -32,10 +32,6 @@ $cus_data_array = mysql_fetch_array($result);
 		
           <div class="row">
             <!-- left column -->
-		<div class="box-footer" style="text-align:right">
-                    <button type="button" class="btn btn-primary" onclick="location.href='crm_customers.php';">Customers List</button>
-                    <button type="button" class="btn btn-primary" onclick="location.href='process/process_crm_delete_customer.php?c=<?php echo $c_id;?>';">Delete</button>
-                  </div>
             <div class="col-md-6">
               <!-- general form elements -->
               <div class="box box-info">

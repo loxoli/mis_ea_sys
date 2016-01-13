@@ -22,7 +22,7 @@
           </h1>
           <ol class="breadcrumb">
            <div class="btn-group-vertical">
-                          <button type="button" class="btn btn-warning">+</button></div>
+                          <button type="button" class="btn btn-warning" ><a href="http://140.135.113.38/EA/add_staff.php">+</a></button></div>
           </ol>
         </section>
 
@@ -41,43 +41,32 @@
                     <thead>
                       <tr>
                         <th>姓名</th>
-                        <th>狀態</th>
+                       
                         <th>職位</th>
                         <th>員工編號</th>
                         <th>活躍度</th>
                       </tr>
 					
-         
          <?php
-                       
- $sql = "SELECT * FROM `staff`;";
-						$result = mysql_query($sql);
-		  while( $row = mysql_fetch_row($result)){
-		   
-					  ?>
+						$sql2 = "SELECT * FROM `staff`";
+						$result2 = mysql_query($sql2);
+						while($employee = mysql_fetch_array($result2)){
+					?>
+        
                     </thead>
                     <tbody>
                       <tr>
-                        <td><?=  $row['fullname']; ?></td>
-                        <td><?= $row['status'];   ?></td>
-                        <td><?= $row['position'] ;  ?></td>
-                        <td><?= $row['staff_id'] ;  ?></td>
-                        <td><?= $row['activity']  ; ?></td>
+                <td><?=$employee['fullname']?></td>
+               
+                <td><?=$employee['position']?></td>
+                <td><?=$employee['staff_id']?></td>
+                <td><?=$employee['activity']?></td>
                       </tr>
                    <?php
 						}
 					?>
                    
-                    </tbody>
-                    <tfoot>
-                      <tr>
-                        <th>姓名</th>
-                        <th>狀態</th>
-                        <th>職位</th>
-                        <th>員工編號</th>
-                        <th>活躍度</th>
-                      </tr>
-                    </tfoot>
+                  
                   </table>
 				 
 				  

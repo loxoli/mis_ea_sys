@@ -1,66 +1,68 @@
 <?php
- $page_title="Logistics management";
+ $page_title="訂單管理 | 訂單查詢";
 include('slice-slice/top.php');
 include('db/db.php');?>
 
-<!-- DataTables -->
-    <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
-
-        <!-- Content Header (Page header) -->
+     <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>															<!----這裡修改頁面內header標題---->
-            商品列表
-            <small>product list</small>
+           訂單管理
+            <a href="order_add_list.php?c=<?=$_ord['inventory_information']?>">新增訂單</a></td></button>
           </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li><!----這裡修改麵包屑---->
-            <li class="active">庫存管理</li>
-            <li class="active">Inventory management</li>
+          <ol class="breadcrumb"
+            <li><a href="#"><i class="fa fa-訂單管理"></i> Home</a></li><!----這裡修改麵包屑---->
+            <li class="active">訂單管理</li>
+            <li class="active">order management information</li 
           </ol>
         </section>
 
- <!-- Main content -->        
- 
- <section class="content"> <!----這個section裡面放內容---->
+        <!-- Main content -->
         <section class="content"> <!----這個section裡面放內容---->
           <div class="row">
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">商品列表</h3>
-				  <a href="inventory.php?c=<?=$ord['inventory_information']?>">庫存列表</a></td></button> <a href="supplier_list.php?c=<?=$ord['supplier_list']?>">供應商列表</a></td></button>
-
+                  <h3 class="box-title">訂單查詢</h3>  <a href="order_add_list.php?c=<?=$ord['inventory_information']?>">新增訂單</a></td></button>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <table id="example1" class="table table-bordered table-striped">
                     <thead>
                       <tr>
-                        <th>產品編號</th>
-                        <th>產品名稱</th>
-                        <th>供應商</th>
-                        <th>單位</th>
-						<th>單價</th>
-				
+                        <th>訂單編號</th>
+                        <th>客戶編號</th>
+                        <th>員工編號</th>
+                        <th>訂單日期</th>
+						<th>要貨日期</th>
+                        <th>送貨日期</th>
+						<th>總價</th>
+						<th>收貨人</th>
+						<th>送貨地址</th>
+	               
 						<th></th>
                       </tr>
                     </thead>
                     <tbody>
 					<?php
-						$sql2 = "SELECT * FROM `product`";
+						$sql2 = "SELECT * FROM `order`";
 						$result2 = mysql_query($sql2);
 						while($ord = mysql_fetch_array($result2)){
 					?>
-                      <tr>
-                        <td><a href="inventory_information.php?c=<?=$ord['p_number']?>"><?=$ord['p_number']?></a></td> 
-                        <td><?=$ord['p_name']?></td>
-						<td><a href="supplier_list.php?c=<?=$ord['s_number']?>"><?=$ord['s_number']?></a></td> 
-						<td><?=$ord['p_nuit']?></td>
-            
-						<td><?=$ord['price']?></td>
-               
-	
-						<td><a href="admin_product.jsp?c=<?=$ord['p_number']?>">新增</a><br><a href="process/process_crm_del_c.php?c=<?=$ord['s_number']?>">刪除</a></td>
-                      </tr>
+                          <tr>
+                          <td><?=$ord['o_number']?></td>
+                          <td><?=$ord['o_customer']?></td>
+                          <td><?=$ord['staff']?></td>
+						  <td><?=$ord['o_date']?></td>
+                          <td><?=$ord['r_date']?></td>
+                          <td><?=$ord['t_date']?></td>
+                          <td><?=$ord['money']?></td>
+						  <td><?=$ord['customer']?></td>
+						  <td><?=$ord['adress']?></td>
+					
+                     
+						
+                          
+						  <td><a href="order_change.php?aid=<?=$ord['o_number']?>">修改</a></td>
+                          </tr>
 					<?php
 						}
 					?>
@@ -68,11 +70,16 @@ include('db/db.php');?>
                     <!--
 					<tfoot>
                       <tr>
-                        <th><i>產品編號</i></th>
-                        <th><i>產品名稱</i></th>
-                        <th><i>供應商</i></th>
-                        <th><i>單位</i></th>
-                        <th><i>單價</i></th>
+                        <th><i>訂單編號</i></th>
+                        <th><i>客戶編號</i></th>
+                        <th><i>員工編號</i></th>
+                        <th><i>訂單日期</i></th>
+                        <th><i>要貨日期</i></th>
+						<th><i>送貨日期</i></th>
+						<th><i>運費</i></th>
+						<th><i>收貨人</i></th>
+						<th><i>送貨地址</i></th>
+						<th><i>訂單狀態</i></th>
 						<th><i></i></th>
                       </tr>
                     </tfoot>

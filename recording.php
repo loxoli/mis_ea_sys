@@ -23,14 +23,12 @@ $email = $_POST['email'];
 
 
 		$sql = "
-		INSERT INTO `staff` (`fullname`, ` status`, `position`, `staff_id`, `activity`, `username`, `joindate`, `birthdate`, `gender`,`phone`) VALUES ('$fullname', '在職', '$position', '$staff_id', '', '活躍', '$joindate', '$birthdat', '$gender',`$phone`);";
-		$sql2 = "INSERT INTO `job` (`staff_id`, `department`, `email`) VALUES ('＄staff_id', '＄department', '＄email');
-		
-		";
+		INSERT INTO `staff` (`fullname`, ` status`, `position`, `staff_id`, `activity`, `username`, `joindate`, `birthdate`, `gender`,`phone`,`email`,`department`) VALUES ('$fullname', '在職', '$position', '$staff_id', '', '活躍', '$joindate', '$birthdate', '$gender','$phone', '$email','$epartment');";
 		
 		
-		$result = mysql_query($sql);
-		$result2 = mysql_query($sql2)
+		
+		$result = mysql_query($sql)
+	
 		 or die('MySQL query error');			
 	}
 ?>

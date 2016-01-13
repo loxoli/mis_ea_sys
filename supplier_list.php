@@ -25,9 +25,10 @@ include('db/db.php');?>
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">供應商列表</h3>
-                </div><!-- /.box-header -->
+                  <h3 class="box-title">供應商列表</h3>   <a href="inventory.php?c=<?=$ord['inventory_information']?>">庫存列表</a></td></button> <a href="supplier.php?c=<?=$ord['supplier_list']?>">供應商列表</a></td></button>
                 <div class="box-body">
+			
+                </div><!-- /.box-header -->
                   <table id="example1" class="table table-bordered table-striped">
                     <thead>
                       <tr>
@@ -46,9 +47,9 @@ include('db/db.php');?>
 						while($ord = mysql_fetch_array($result2)){
 					?>
                       <tr>
-                        <td><?=$ord['s_number']?></td>
+                     <td><a href="supplier_list.php?c=<?=$ord['s_number']?>"><?=$ord['s_number']?></a></td>
                         <td><?=$ord['company']?></td>
-						<td><?=$ord['s_name']?></td>
+					    <td><?=$ord['s_name']?></td>
                         <td><?=$ord['s_adress']?></td>
                         <td><?=$ord['s_phone']?></td>
 	

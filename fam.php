@@ -28,14 +28,16 @@ include('db/db.php');?>
                 <div class="box-body">
                   
 				  
-				  
-				  
-				  
+								
 				  <table id="example1" class="table table-bordered table-striped">
                     <thead>
                       <tr>
+						
+							  
+				  
+				  
                         
-						 <h1>
+		  <h1>
             Financial
             
           </h1>
@@ -53,41 +55,28 @@ include('db/db.php');?>
               <!-- small box -->
               <div class="small-box bg-aqua">
                 <div class="inner">
-                  <h3>$</h3>
-                  <p>Cash Control</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-bag"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-              </div>
-            </div><!-- ./col -->
-            <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-green">
-                <div class="inner">
-                  <h3>?<sup style="font-size: 20px">$</sup></h3>
-                  <p>Fixed Assests</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-stats-bars"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-              </div>
-            </div><!-- ./col -->
-            <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-yellow">
-                <div class="inner">
                   <h3>A/R</h3>
                   <p>Accounts Receivable</p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-person-add"></i>
+                  <i class="ion ion-bag"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                <a href='accounts_receivable_list.php' class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+			
+
               </div>
             </div><!-- ./col -->
+			
+			
+			
+			
+			
+           
+			
+			
+			
+			
+			
             <div class="col-lg-3 col-xs-6">
               <!-- small box -->
               <div class="small-box bg-red">
@@ -96,9 +85,9 @@ include('db/db.php');?>
                   <p>Accounts Payable</p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-pie-graph"></i>
+                  <i class="ion ion-document"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                <a href='accounts_payable_list.php' class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
               </div>
             </div><!-- ./col -->
           </div><!-- /.row -->
@@ -111,28 +100,17 @@ include('db/db.php');?>
 
              
 						
-						
-						
-						
-						
+					
+
+
+					
+	
 						
 						
 						
                       </tr>
                     </thead>
-                    <tbody>
-					  <tr>
-                        <td><?=$customer['name']?></td>
-                        <td><?=$customer['phone']?></td>
-                        <td><?=$customer['email']?></td>
-						<td><?=$customer['company']?></td>
-                        <td><?=$customer['country']?></td>
-                        <td><?=$customer['address']?></td>
-						<td><a href="crm_edit_cus.php?c=<?=$customer['c_uid']?>">編輯</a><br><a href="process/process_crm_del_c.php?c=<?=$customer['c_uid']?>">刪除</a></td>
-                      </tr>
-					
-                    </tbody>
-                                      </table>
+                  </table>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
 
